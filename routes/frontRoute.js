@@ -1,0 +1,20 @@
+const express = require('express');
+const path = require('path');
+const router = express.Router();
+const mongoose = require("mongoose");
+const db = require("../models/workout");
+
+router.get('/', (req,res)=> {
+    res.send(index.html)
+});
+
+router.get('/stats', (req,res) => {
+    res.sendFile(path.join(__dirname, '../public/stats.html'))
+});
+router.get('/excercise', (req,res) => {
+    res.sendFile(path.join(__dirname, '../public/exercise.html'))
+});
+
+    
+
+module.exports = router;
