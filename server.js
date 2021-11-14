@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongod://localhost/fitnessTracker", {useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongod://localhost/workoutTracker", {useNewUrlParser: true });
 
 
 // Add app get later
