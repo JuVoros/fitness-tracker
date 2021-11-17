@@ -7,9 +7,13 @@
 ## Description
 A convenient app to track and plan out workouts to get your grind on no matter the excercise.
 
+![jv-fitness-tracker herokuapp com_](https://user-images.githubusercontent.com/78007904/142089993-57fdc15d-418f-4f51-9cbc-d228ce2b64c1.png)
+
+![jv-fitness-tracker herokuapp com_exercise](https://user-images.githubusercontent.com/78007904/142090009-03786019-8e06-40f6-88b4-5b0e8ddb3503.png)
+
+
 ## Table of Contents
 1. [Installation](#installation)
-3. [Credits](#credits)
 4. [License](#license)
 5. [Contributing](#contributing)
 7. [Questions](#questions)
