@@ -5,6 +5,7 @@
 </p>
 
 ## Description
+A convenient app to track and plan out workouts to get your grind on no matter the excercise.
 
 ## Table of Contents
 1. [Installation](#installation)
