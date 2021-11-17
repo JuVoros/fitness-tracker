@@ -1,10 +1,8 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const router = express.Router();
-const db = require("../models/workout");
+const router = require("express").Router();
+const Workout = require("../models");
 
-router.get("/api/workouts", (req, res) => {
-  db.aggregate([
+router.get("/workouts", (req, res) => {
+  Workout.aggregate([
     {
       $addFields: {
         totalDuration: {
@@ -21,15 +19,17 @@ router.get("/api/workouts", (req, res) => {
     });
 });
 
-router.get("/range", (req, res) => {
-  db.Workout.aggregate([
+router.get("/workouts/range", (req, res) => {
+  Workout.aggregate([
     {
       $addFields: {
-        totalDuration: { $sum: "$exercises.duration" },
+        totalDuration: {
+          $sum: "$exercises.duration",
+        },
       },
     },
   ])
-    .sort({ day: -1 })
+    .sort({ name: -1 })
     .limit(7)
     .then((dbRange) => {
       res.json(dbRange);
@@ -39,16 +39,11 @@ router.get("/range", (req, res) => {
     });
 });
 
-router.put("/api/workouts/:id", (req, res) => {
+router.put("/api/workout/:id", (req, res) => {
   console.log(req.body);
-  db.Workout.updateOne(
-    {
-      _id: mongoose.Types.ObjectId(req.params.id),
-    },
-    {
-      $push: { exercises: req.body },
-    }
-  )
+  Workout.findByIdAndUpdate(req.params.id, {
+    $push: { exercises: req.body },
+  })
     .then((updateDb) => {
       res.json(updateDb);
     })
@@ -58,10 +53,17 @@ router.put("/api/workouts/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  db.Workout.insertMany(req.body).then((insertDb) => {
-    workout = insertDb[0];
-    res.json(err);
-  });
+  Workout.create({})
+    .then((insertDb) => {
+      res.json(insertDb);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
 });
+
+// router.delete("/", (req,res)=>{
+//   Workout.delete({})
+// })
 
 module.exports = router;
