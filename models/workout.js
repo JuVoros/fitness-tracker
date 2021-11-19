@@ -4,21 +4,21 @@ const Schema = mongoose.Schema;
 const workoutSchema = new Schema({
   day: {
     type: Date,
-    default: Date.now
+    default: () => new Date(),
   },
   exercises: [
     {
       type: {
         type: String,
-        required: "Type is always required!"
+        required: "Type is always required!",
       },
       name: {
         type: String,
-        required: "Name is always required!"
+        required: "Name is always required!",
       },
       duration: {
         type: Number,
-        required: "Duration is always required!"
+        required: "Duration is always required!",
       },
       sets: {
         type: Number,
@@ -35,7 +35,6 @@ const workoutSchema = new Schema({
     },
   ],
 });
-
 
 const Workout = mongoose.model("Workout", workoutSchema);
 
